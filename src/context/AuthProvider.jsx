@@ -1,9 +1,11 @@
-import { Children, createContext, useContext, useEffect, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 import { fetchData } from "../utils/RapidApi";
 
 export const AuthContext = createContext();
 
-export default function AuthProvider({children }) {
+export default AuthProvider;
+
+function AuthProvider({ children }) {
   const [loading, setLoading] = useState(false);
   const [data, setData] = useState([]);
   const [value, setValue] = useState("New");
@@ -12,20 +14,25 @@ export default function AuthProvider({children }) {
     fetchAlldata(value);
   }, [value]);
 
-  const fetchAlldata = (query) => {
+  const fetchAlldata = async (query) => {
     setLoading(true);
-    fetchData(`search/?q=${query}`).then(({ contents }) => {
+    try {
+      const response = await fetchData(`search/?q=${query}`);
+      const { contents } = response;
       setData(contents);
-      console.log(contents);
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    } finally {
       setLoading(false);
-    });
+    }
   };
 
   return (
-    <AuthContext.Provider value={{loading, data, value, setValue}}>
+    <AuthContext.Provider value={{ loading, data, value, setValue }}>
       {children}
     </AuthContext.Provider>
   );
 }
-//cusome hook hai
+
+// custom hook hai
 export const useAuth = () => useContext(AuthContext);
