@@ -13,7 +13,8 @@ export default function AuthProvider({ children }) {
   }, [value]);
 
   const fetchAlldata = (query) => {
-    fetchData(`search?q=${query}`).then((res) => {
+    setLoading(true);
+    fetchData(`search/?q=${query}`).then((res) => {
       setData(res);
       setLoading(false);
     });
@@ -25,5 +26,5 @@ export default function AuthProvider({ children }) {
     </AuthContext.Provider>
   );
 }
-
+//cusome hook hai 
 export const useAuth = () => useContext(AuthContext);
