@@ -1,8 +1,14 @@
-import logo from "./logo.svg";
-import "./App.css";
-import AppContext from "./context/contextApi";
+import React from "react";
+import NavBar from "./components/NavBar";
+import SideBar from "./components/SideBar";
+
 function App() {
-  return <AppContext>App</AppContext>;
+  return (
+    <>
+      <NavBar />
+      <SideBar/>
+    </>
+  );
 }
 
 export default App;
