@@ -33,7 +33,7 @@ function PlayingVideo() {
     <div className=" flex justify-center flex-row h-[calc(100%-56px)] mt-16">
       <div className="w-full max-w-[1580px] flex flex-col lg:flex-row">
         <div className="flex flex-col lg:w-[calc(100%-350px)] xl:w-[100%-400px] px-4 py-3 lg:py-6">
-          <div className="h-[200px] md:h-[700px] ml-[-16px] mr-[-16px] lg:ml-0 lg:mr-0">
+          <div className="h-[200px] md:h-[700px] ml-[-16px] mr-[-16px] lg:ml-0 lg:mr-0 ">
             <ReactPlayer
               url={`https://www.youtube.com/watch?v=${id}`}
               height="100%"
@@ -90,7 +90,7 @@ function PlayingVideo() {
             {video?.stats?.comments} <p>Comments</p>
           </div>
         </div>
-        <div>
+        <div className="flex flex-col px-4 py-6 h-[calc(100vh-4.625rem)] overflow-y-scroll overflow-x-hidden ">
           {realatedVideo?.contents?.map((item, index) => {
             if (item?.type !== "video") return false;
             return <SuggestedVideo key={index} video={item?.video} />;
