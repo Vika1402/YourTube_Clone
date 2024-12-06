@@ -8,7 +8,7 @@ export default AuthProvider;
 function AuthProvider({ children }) {
   const [loading, setLoading] = useState(false);
   const [data, setData] = useState([]);
-  const [value, setValue] = useState("New");
+  const [value, setValue] = useState("bolliwood song");
 
   useEffect(() => {
     fetchAlldata(value);

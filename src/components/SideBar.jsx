@@ -126,7 +126,7 @@ const menuSections = [
 ];
 
 const Menu = () => (
-  <div className="px-6 w-[18%] space-y-8 h-[calc(100vh-6.25rem)]  overflow-y-scroll overflow-x-hidden transition-all duration-300">
+  <div className="px-6 w-[20%] space-y-8 h-[calc(100vh-6.25rem)]  overflow-y-scroll overflow-x-hidden transition-all duration-300">
     {menuSections.map((section, id) => (
       <div key={id} className="space-y-4">
         <h3 className="font-bold text-gray-600">{section.title}</h3>
