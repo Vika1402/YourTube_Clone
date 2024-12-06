@@ -5,9 +5,13 @@ import { Route, Routes } from "react-router-dom";
 import Home from "./components/Home";
 import PlayVideo from "./components/PlayVideo";
 import Search from "./components/Search";
+import { useAuth } from "./context/AuthProvider";
+import Loading from "./loader/Loading";
 function App() {
+  const { loading } = useAuth();
   return (
     <div>
+      {loading && <Loading />}
       <NavBar />
       <Routes>
         <Route path="/" element={<Home />} />
