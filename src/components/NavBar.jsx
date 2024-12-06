@@ -1,10 +1,22 @@
-import React from "react";
+import React, { useState } from "react";
 import { TiThMenu } from "react-icons/ti";
 import { CiSearch } from "react-icons/ci";
 import { FaMicrophone } from "react-icons/fa";
 import { MdOutlineVideoCall } from "react-icons/md";
 import { FaBell } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
 function NavBar() {
+  const [searchQuery, setSearchQuery] = useState("");
+  const navigate = useNavigate();
+  const searchQueryHandler = (event) => {
+    if (
+      (event?.key === "Enter" || event === "searchButton") &&
+      searchQuery?.length > 0
+    ) {
+      navigate(`/search/${searchQuery}`);
+      setSearchQuery("");
+    }
+  };
   return (
     <div className="fixed top-0 flex justify-between px-6 py-2 mt-2 bg-white shadow-lg w-[100%]">
       <div className="flex items-center space-x-4 ">
@@ -17,10 +29,17 @@ function NavBar() {
       </div>
       <div className="flex items-center  w-[37%]  ">
         <div className="w-[100%] px-3 py-2 border rounded-l-full ">
-          <input type="text" placeholder=" Search" className="outline-none" />
+          <input
+            onChange={(e) => setSearchQuery(e.target.value)}
+            onKeyUp={searchQueryHandler}
+            value={searchQuery}
+            type="text"
+            placeholder=" Search"
+            className="outline-none"
+          />
         </div>
         <button className="px-3 py-2.5 text-xl bg-gray-100 border rounded-r-full">
-          <CiSearch />
+          <CiSearch onClick={searchQueryHandler} />
         </button>
 
         <FaMicrophone

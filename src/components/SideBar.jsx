@@ -33,11 +33,20 @@ import { FaVideo } from "react-icons/fa";
 import { RiTimerFill } from "react-icons/ri";
 import { AiFillLike } from "react-icons/ai";
 import { IoMdTrendingUp } from "react-icons/io";
+import { Link } from "react-router-dom";
 const menuSections = [
   {
     title: "Main",
     items: [
-      { id: 1, icon: <MdHome size={"25px"} />, label: "Home" },
+      {
+        id: 1,
+        icon: (
+          <>
+            <MdHome size={"25px"} />
+          </>
+        ),
+        label: "Home",
+      },
       { id: 2, icon: <SiYoutubeshorts size={"23px"} />, label: "Shorts" },
       {
         id: 3,
